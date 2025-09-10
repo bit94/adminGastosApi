@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminGastosController {
 	@GetMapping("/saludo")
 	public String saludo() {
+		System.out.println("Request /saludo");
 		return "¡Hola desde el backend!";
 	}
-
-	// Health check para Railway
+	
 	@GetMapping("/health")
 	public ResponseEntity<String> healthCheck() {
 		return ResponseEntity.ok("OK");
