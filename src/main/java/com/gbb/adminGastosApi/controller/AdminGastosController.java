@@ -1,6 +1,7 @@
 package com.gbb.adminGastosApi.controller;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,10 +19,15 @@ public class AdminGastosController {
 		return "¡Hola desde el backend!";
 	}
 	
-	@GetMapping("/health")
-	public ResponseEntity<String> healthCheck() {
-		return ResponseEntity.ok("OK");
-	}
+    // Health check personalizado
+    @GetMapping("/health")
+    public ResponseEntity<Map<String, String>> health() {
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "UP");
+        response.put("timestamp", new Date().toString());
+        response.put("service", "Admin Gastos API");
+        return ResponseEntity.ok(response);
+    }
 
 	// Info endpoint
 	@GetMapping("/info")
