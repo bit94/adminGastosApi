@@ -18,23 +18,19 @@ public class AdminGastosController {
 		System.out.println("Request /saludo");
 		return "¡Hola desde el backend!";
 	}
-	
-    // Health check personalizado
-    @GetMapping("/health")
-    public ResponseEntity<Map<String, String>> health() {
-        Map<String, String> response = new HashMap<>();
-        response.put("status", "UP");
-        response.put("timestamp", new Date().toString());
-        response.put("service", "Admin Gastos API");
-        return ResponseEntity.ok(response);
-    }
 
-	// Info endpoint
-	@GetMapping("/info")
-	public ResponseEntity<Map<String, String>> info() {
-		Map<String, String> info = new HashMap<>();
-		info.put("status", "running");
-		info.put("timestamp", LocalDateTime.now().toString());
-		return ResponseEntity.ok(info);
+	// HEALTH CHECK MUY SIMPLE
+	@GetMapping("/health")
+	public String health() {
+		return "OK";
+	}
+
+	// Endpoint adicional para testing
+	@GetMapping("/test")
+	public Map<String, String> test() {
+		Map<String, String> response = new HashMap<>();
+		response.put("status", "running");
+		response.put("port", System.getProperty("server.port"));
+		return response;
 	}
 }
