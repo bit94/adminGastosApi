@@ -1,15 +1,23 @@
 package com.gbb.adminGastosApi;
 
-import org.springframework.boot.SpringApplication;
+import java.util.Collections;
+
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 
 @SpringBootApplication
 public class AdminGastosApiApplication {
 
 	public static void main(String[] args) {
-		String port = System.getenv("PORT");
-        System.out.println("PORT environment variable: " + port);
-		SpringApplication.run(AdminGastosApiApplication.class, args);
+		// Obtener el puerto de Railway o usar puerto por defecto
+        String port = System.getenv().getOrDefault("PORT", "8080");
+        
+        System.out.println("🚀 Iniciando aplicación en puerto: " + port);
+        
+        // Configurar Spring Boot para usar el puerto específico
+        new SpringApplicationBuilder(AdminGastosApiApplication.class)
+            .properties(Collections.singletonMap("server.port", port))
+            .run(args);
 	}
 
 }
