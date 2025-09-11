@@ -2,10 +2,13 @@ package com.gbb.adminGastosApi.security;
 
 import java.util.Date;
 
+import org.springframework.stereotype.Component;
+
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import java.security.Key;
 
+@Component
 public class JwtUtil {
 	private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 	private final long expiration = 8640000;
