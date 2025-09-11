@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.gbb</groupId>
 	<artifactId>adminGastosApi</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0.2</version>
 	<packaging>war</packaging>
 	<name>adminGastosApi</name>
 	<description>Proyecto personal para el control de deudas, pagos y gastos</description>
@@ -28,7 +28,7 @@
 		<url/>
 	</scm>
 	<properties>
-		<java.version>24</java.version>
+		<java.version>21</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
