@@ -9,7 +9,6 @@ import lombok.*;
 @Table(name = "cUsuarios")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,5 +34,19 @@ public class Usuario {
 	protected void onCreate() {
 		fechaCreacion = LocalDateTime.now();
 		activo = true;
+	}
+
+	public Usuario(Long id, String email, String password, String nombre, LocalDateTime fechaCreacion, Boolean activo) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.nombre = nombre;
+		this.fechaCreacion = fechaCreacion;
+		this.activo = activo;
+	}
+	
+	public String getPassword() {
+	    return password;
 	}
 }
