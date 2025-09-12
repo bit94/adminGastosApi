@@ -5,6 +5,7 @@ import com.gbb.adminGastosApi.repository.UsuarioRepository;
 import com.gbb.adminGastosApi.security.JwtUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -29,14 +30,20 @@ public class AuthService {
 		return jwtUtil.generateToken(email);
 	}
 
-	public String login(String email, String password) {
-		Usuario usuario = usuarioRepository.findByEmail(email)
-				.orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+	public ResponseEntity<String> login(String email, String password) {
+		try {
+			Usuario usuario = usuarioRepository.findByEmail(email)
+					.orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
-		if (!encoder.matches(password, usuario.getPassword())) {
-			throw new RuntimeException("Contraseña incorrecta");
+			if (!encoder.matches(password, usuario.getPassword())) {
+				return ResponseEntity.status(401).body("Contraseña incorrecta");
+			}
+
+			String token = jwtUtil.generateToken(email);
+			return ResponseEntity.ok(token);
+
+		} catch (RuntimeException e) {
+			return ResponseEntity.status(401).body(e.getMessage());
 		}
-
-		return jwtUtil.generateToken(email);
 	}
 }
