@@ -45,8 +45,8 @@ public class Usuario {
 		this.fechaCreacion = fechaCreacion;
 		this.activo = activo;
 	}
-	
+
 	public String getPassword() {
-	    return password;
+		return password;
 	}
 }
