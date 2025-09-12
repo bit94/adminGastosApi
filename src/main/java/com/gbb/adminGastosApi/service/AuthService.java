@@ -7,6 +7,7 @@ import com.gbb.adminGastosApi.security.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,7 +18,9 @@ public class AuthService {
 	@Autowired
 	private JwtUtil jwtUtil;
 
-	private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+	//private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+	@Autowired
+	private PasswordEncoder encoder;
 
 	public String register(String email, String password, String nombre) {
 		if (usuarioRepository.findByEmail(email).isPresent()) {
