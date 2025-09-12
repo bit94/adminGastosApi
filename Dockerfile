@@ -1,5 +1,5 @@
-# Usa JDK 24
-FROM eclipse-temurin:24-jdk
+# Usa JDK 21
+FROM eclipse-temurin:21-jdk
 
 # Crea directorio de trabajo
 WORKDIR /app
