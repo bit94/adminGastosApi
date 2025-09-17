@@ -20,4 +20,9 @@ public class AuthController {
 	public ResponseEntity<String> login(@RequestParam String email, @RequestParam String password) {
 		return authService.login(email, password);
 	}
+
+	@GetMapping("/validate")
+	public ResponseEntity<Void> validateToken() {
+		return ResponseEntity.ok().build();
+	}
 }
