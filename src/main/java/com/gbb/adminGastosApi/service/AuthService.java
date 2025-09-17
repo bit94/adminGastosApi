@@ -51,7 +51,8 @@ public class AuthService {
 		Map<String, Object> claims = new HashMap<>();
 		claims.put("roles", usuario.getRoles().stream().map(rol -> "ROLE_" + rol.getNombre().toUpperCase())
 				.collect(Collectors.toList()));
-
+		claims.put("nombre", usuario.getNombre());
+		
 		// Generar y devolver el token
 		return jwtUtil.generateToken(claims, usuario.getEmail());
 	}
@@ -68,7 +69,10 @@ public class AuthService {
 			Map<String, Object> claims = new HashMap<>();
 			claims.put("roles", usuario.getRoles().stream().map(role -> "ROLE_" + role.getNombre().toUpperCase())
 					.collect(Collectors.toList()));
+			claims.put("nombre", usuario.getNombre());
+			
 			String token = jwtUtil.generateToken(claims, usuario.getEmail());
+			
 			return ResponseEntity.ok(token);
 
 		} catch (RuntimeException e) {
