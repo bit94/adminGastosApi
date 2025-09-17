@@ -3,6 +3,7 @@ package com.gbb.adminGastosApi.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,11 +32,13 @@ public class TipoPeriodoController {
 	}
 
 	@GetMapping
+	@PreAuthorize("hasAnyRole('ADMIN', 'USER')")
 	public List<TipoPeriodoDTO> getAll() {
 		return service.findAll().stream().map(mapper::toDTO).toList();
 	}
 
 	@PostMapping
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public ResponseEntity<TipoPeriodoDTO> create(@Valid @RequestBody TipoPeriodoDTO dto) {
 		TipoPeriodo entity = mapper.toEntity(dto);
 		TipoPeriodo saved = service.save(entity);
@@ -43,6 +46,7 @@ public class TipoPeriodoController {
 	}
 
 	@PutMapping("/{id}")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public ResponseEntity<TipoPeriodoDTO> update(@PathVariable Long id, @Valid @RequestBody TipoPeriodoDTO dto) {
 		TipoPeriodo entity = mapper.toEntity(dto);
 		TipoPeriodo updated = service.update(id, entity);
@@ -50,6 +54,7 @@ public class TipoPeriodoController {
 	}
 
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		service.deleteById(id);
 		return ResponseEntity.noContent().build();

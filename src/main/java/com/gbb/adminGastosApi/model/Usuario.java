@@ -1,6 +1,7 @@
 package com.gbb.adminGastosApi.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -28,6 +29,14 @@ public class Usuario {
 
 	@Column(name = "activo")
 	private Boolean activo;
+
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(
+	    name = "usuario_roles",
+	    joinColumns = @JoinColumn(name = "usuario_id"),
+	    inverseJoinColumns = @JoinColumn(name = "rol_id")
+	)
+	private List<Rol> roles;
 
 	// Pre-persist para setear fecha automáticamente
 	@PrePersist
