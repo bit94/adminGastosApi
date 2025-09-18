@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class TipoPeriodoDTO {
+	private Long id;
+	
 	@NotBlank(message = "La descripción no puede estar vacía.")
 	private String descripcion;
 
