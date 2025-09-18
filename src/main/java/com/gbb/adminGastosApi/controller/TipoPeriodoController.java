@@ -41,6 +41,7 @@ public class TipoPeriodoController {
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	public ResponseEntity<?> create(@Valid @RequestBody TipoPeriodoDTO dto) {
 		try {
+			System.out.println("DTO recibido: " + dto);
 			TipoPeriodo entity = mapper.toEntity(dto);
 			TipoPeriodo saved = service.save(entity);
 			return ResponseEntity.ok(mapper.toDTO(saved));
