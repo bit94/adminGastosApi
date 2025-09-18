@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.gbb.adminGastosApi.model.base.BaseEntity;
 
@@ -35,7 +37,7 @@ public abstract class CatalogoService<T extends BaseEntity> {
 
 	public T update(Long id, T entity) {
 		if (!repository.existsById(id)) {
-			throw new EntityNotFoundException("No existe el catálogo con ID: " + id);
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No existe el catálogo con ID: " + id);
 		}
 
 		// Asegura que el ID del path prevalezca
