@@ -17,7 +17,7 @@ import com.gbb.adminGastosApi.mapper.TipoPeriodoMapper;
 import com.gbb.adminGastosApi.model.TipoPeriodo;
 import com.gbb.adminGastosApi.service.TipoPeriodoService;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.web.bind.annotation.RequestBody;
 import jakarta.validation.Valid;
 
 @RestController

@@ -8,8 +8,6 @@ import com.gbb.adminGastosApi.model.TipoPeriodo;
 
 @Mapper(componentModel = "spring")
 public interface TipoPeriodoMapper {
-	TipoPeriodoMapper INSTANCE = Mappers.getMapper(TipoPeriodoMapper.class);
-
 	TipoPeriodo toEntity(TipoPeriodoDTO dto);
 
 	TipoPeriodoDTO toDTO(TipoPeriodo entity);
