@@ -39,10 +39,14 @@ public class TipoPeriodoController {
 
 	@PostMapping
 	@PreAuthorize("hasAnyRole('ADMIN')")
-	public ResponseEntity<TipoPeriodoDTO> create(@Valid @RequestBody TipoPeriodoDTO dto) {
-		TipoPeriodo entity = mapper.toEntity(dto);
-		TipoPeriodo saved = service.save(entity);
-		return ResponseEntity.ok(mapper.toDTO(saved));
+	public ResponseEntity<?> create(@Valid @RequestBody TipoPeriodoDTO dto) {
+		try {
+			TipoPeriodo entity = mapper.toEntity(dto);
+			TipoPeriodo saved = service.save(entity);
+			return ResponseEntity.ok(mapper.toDTO(saved));
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body("Error al registrar: " + e.getMessage());
+		}
 	}
 
 	@PutMapping("/{id}")
