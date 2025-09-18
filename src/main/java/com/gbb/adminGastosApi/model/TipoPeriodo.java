@@ -22,7 +22,7 @@ public class TipoPeriodo extends BaseEntity {
 	@Column(unique = true, nullable = false)
 	private String Descripcion;
 
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private int Dias;
 
 	@Column(nullable = false)
