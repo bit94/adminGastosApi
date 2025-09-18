@@ -25,10 +25,10 @@ public class TipoPeriodo extends BaseEntity {
 	@Column(nullable = false)
 	private int dias;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private LocalDateTime fechaCreacion;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Boolean activo;
 
 	@PrePersist

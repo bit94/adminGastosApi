@@ -64,5 +64,4 @@ public class TipoPeriodoController {
 		service.deleteById(id);
 		return ResponseEntity.noContent().build();
 	}
-
 }

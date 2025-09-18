@@ -1,6 +1,5 @@
 package com.gbb.adminGastosApi.service.base;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,8 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.gbb.adminGastosApi.model.base.BaseEntity;
-
-import jakarta.persistence.EntityNotFoundException;
 
 public abstract class CatalogoService<T extends BaseEntity> {
 	protected final JpaRepository<T, Long> repository;
