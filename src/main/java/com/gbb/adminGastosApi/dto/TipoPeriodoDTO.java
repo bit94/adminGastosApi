@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TipoPeriodoDTO {
 	@NotBlank(message = "La descripción no puede estar vacía.")
-	private String Descripcion;
+	private String descripcion;
 
 	@Min(value = 1, message = "Los días deben ser al menos 1.")
 	@Max(value = 365, message = "No puede exceder un año.")
-	private int Dias;
+	private int dias;
 }

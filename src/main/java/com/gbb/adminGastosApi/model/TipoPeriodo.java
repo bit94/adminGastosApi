@@ -20,20 +20,20 @@ import com.gbb.adminGastosApi.model.base.BaseEntity;
 @NoArgsConstructor
 public class TipoPeriodo extends BaseEntity {
 	@Column(unique = true, nullable = false)
-	private String Descripcion;
+	private String descripcion;
 
 	@Column(nullable = false)
-	private int Dias;
+	private int dias;
 
 	@Column(nullable = false)
-	private LocalDateTime FechaCreacion;
+	private LocalDateTime fechaCreacion;
 
 	@Column(nullable = false)
 	private Boolean activo;
 
 	@PrePersist
 	protected void onCreate() {
-		FechaCreacion = LocalDateTime.now();
+		fechaCreacion = LocalDateTime.now();
 		activo = true;
 	}
 }
